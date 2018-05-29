@@ -1,0 +1,29 @@
+{
+"brands":[
+    {
+	"brand_id":1,
+	"features":{"feature1":1,"feature2":2,"feature3":3}
+    },
+    { 
+        "brand_id":2,
+	"features":{"feature1":4,"feature2":5,"feature3":6}
+    },
+    { 
+        "brand_id":3,
+	"features":{"feature1":7,"feature2":8,"feature3":9}
+    },
+    {
+	"brand_id":4,
+	"features":{"feature1":1,"feature2":2,"feature3":3}
+    },
+    { 
+        "brand_id":5,
+	"features":{"feature1":4,"feature2":5,"feature3":6}
+    },
+    { 
+        "brand_id":6,
+	"features":{"feature1":7,"feature2":8,"feature3":9}
+    }
+]
+}
+

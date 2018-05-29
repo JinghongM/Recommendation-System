@@ -1,0 +1,33 @@
+items.json:
+[
+    {
+	"item_id":1,"brand_id":10,"gender":"M","max_temperature":20,"min_temperature":40
+    },
+    {
+	"item_id":2,"brand_id":20,"gender":"M","max_temperature":20,"min_temperature":40
+    },
+    {
+	"item_id":3,"brand_id":30,"gender":"M","max_temperature":20,"min_temperature":40
+    }
+]
+
+user_info.json:
+{
+    "user_id":1,
+    "user_state_code":"NY",
+    "gender":"M",
+    "brand_id":[1,2,3,4,5]
+}
+normalize_brand.json:
+[
+    {
+	"brand_id":1,"feature1:-1,"feature2":0,"feature3":1
+    },
+    { 
+        "brand_id":2,"feature1:-1,"feature2":0,"feature3":1
+    },
+    { 
+        "brand_id":3,"feature1:-1,"feature2":0,"feature3":1
+    },
+]
+

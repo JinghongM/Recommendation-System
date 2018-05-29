@@ -1,0 +1,17 @@
+[
+    {
+	"item_id":10,"brand_id":1
+    },
+    {
+	"item_id":20,"brand_id":2
+    },
+    {
+	"item_id":30,"brand_id":3
+    },
+    {
+	"item_id":40,"brand_id":3
+    },
+    {
+	"item_id":50,"brand_id":4
+    }
+]
