@@ -4,6 +4,9 @@ import json
 from fuzzywuzzy import fuzz
 from collections import OrderedDict
 from pandas.io.json import json_normalize
+#load function to load item json file
+#input: json file path
+#output: brandID dictionary with brandID=>itemIDs list
 def loadItemDataset(filename):
     brandIdItemsId={}
     with open(filename,'r') as data:
@@ -15,11 +18,16 @@ def loadItemDataset(filename):
                 brandIdItemsId[brandId] = []
             brandIdItemsId[brandId].append(itemId)
     return brandIdItemsId
+#load function to load rating file
+#input: json file path
+#output: high rating brandIDs list
 def loadRateDataset(filename):
     with open(filename,'r') as data:
         parseData=json.load(data)
         return parseData["brand_id"]
-
+#load function to load brand file
+#input: json file path
+#output:brand features dictionary with brandID=>features
 def loadBrandDataset(filename):
     brandGlossary={}
     with open(filename,'r') as data:
@@ -31,20 +39,26 @@ def loadBrandDataset(filename):
                 curBrandList.append(brand["features"][feature])
             brandGlossary[brandId]=curBrandList
         return brandGlossary
+#calculate distance between two brand instances
+#input: instances vectors
+#output: distance
 def euclideanDistance(instance1,instance2):
     distance = 0
     featuresNum=len(instance1)
     for x in range(featuresNum):
         distance+=pow((float(instance1[x])-float(instance2[x])),2)
     return math.sqrt(distance)
-def getNeighbors(dataset,testInstance,k):
+#get the sorted neighbours for one specific brand
+#input: whole brand dataset, test brand
+#output: brands list
+def getNeighbors(dataset,testInstance):
     distances=[]
     for brandId,brandFeatures in dataset.items():
         dist=euclideanDistance(testInstance,brandFeatures)
         distances.append((brandId,dist))
     distances.sort(key=lambda tup:tup[1])
     neighbors=[]
-    for x in range(min(k,len(distances))):
+    for x in range(len(distances)):
         neighbors.append(distances[x][0])
     return neighbors
 #Items: items .json file with itemID and brandID
@@ -62,7 +76,7 @@ def KnnBrandRecommender(items,highRatings,normalizedBrands,k,filterItemIDs=None)
     brandCount={}
     for brandId in userRated:
         testInstance = brandGlossary[brandId]
-        neighbors = getNeighbors(brandGlossary,testInstance,k)
+        neighbors = getNeighbors(brandGlossary,testInstance)
         for neighbor in neighbors:
             if neighbor in brandCount:
                 brandCount[neighbor] += 1
