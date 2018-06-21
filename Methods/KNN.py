@@ -47,6 +47,11 @@ def getNeighbors(dataset,testInstance,k):
     for x in range(min(k,len(distances))):
         neighbors.append(distances[x][0])
     return neighbors
+#Items: items .json file with itemID and brandID
+#highRatings: rating .json file with the high ratings brandID
+#normalizedBrands: generated brand matrix
+#k: the number of brands that are the most nearest brands to high rating brands
+#filterItemsID: the list of filtered items according to gender,temperature
 def KnnBrandRecommender(items,highRatings,normalizedBrands,k,filterItemIDs=None):
     try:
         brandItems=loadItemDataset(items) #itemFile
